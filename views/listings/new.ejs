@@ -1,0 +1,86 @@
+<% layout('layouts/boilerplate') %>
+
+  
+        <div class="row">
+            <div class="col-7 offset-2">
+                <div class="container mt-4">
+                    <br><br>
+                    <h3>Create New List</h3>
+
+                    <form action="/listings/new" method="post" autocomplete="off"  class="needs-validation" novalidate enctype="multipart/form-data"> <!-- needs-validation for bootstrap validation and novalidate to stop form validation -->
+                        <div>
+                            <label for="title" class="form-label" >Title</label>
+                            <input type="text" placeholder="Add a catchy title" name="Listing[title]" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Please enter title
+                              </div>
+                        </div>
+
+                        <div>
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="Listing[description]" id="" class="form-control" required></textarea >
+                            <div class="invalid-feedback">
+                                Add some description
+                              </div>
+                        </div>
+                        <div class="mt-4 mb-3">
+                            <label for="category" class="form-label">Select Category</label>
+                            <select name="Listing[category]" id="category" class="form-control" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="mountain">MOUNTAIN</option>
+                                <option value="farm">FARM</option>
+                                <option value="castle">CASTLE</option>
+                                <option value="beach">BEACH</option>
+                                <option value="snow">SNOW</option>
+                                <option value="pool">POOL</option>
+                                <option value="city">CITY</option>
+                                <option value="camping">CAMPING</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a category.
+                            </div>
+                        </div>
+                        
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Upload Listing Image</label>
+                            <input type="file" name="Listing[image]" class="form-control" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="md-3 col-md-4">
+                                <label for="price" class="form-label">Price</label>
+                                <input placeholder="1200" name="Listing[price]"
+                                    class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Enter some price
+                                      </div>
+                            </div>
+
+                            <div class="mb-3 col-md-8">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" placeholder="India" name="Listing[country]"
+                                    class="form-control" required>
+                                    <div class="invalid-feedback">
+                                        Enter valid country
+                                      </div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <label for="location" class="form-label">Location</label>
+                            <input  type="text" placeholder="Jaipur, Rajasthan" name="Listing[location]"
+                                class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Enter valid location
+                                  </div>
+                        </div>
+                        <br>
+                        <button class="btn btn-dark ans-btn">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+<script src="/js/script.js"></script>
+   

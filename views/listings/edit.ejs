@@ -1,0 +1,84 @@
+<!-- <% layout('../layouts/boilerplate') %> wrong becouse of app.set("views", path.join(__dirname, "views")); 
+ layouts/boilerplate
+
+    Relative to views Directory: When views is set as the base directory (app.set("views", path.join(__dirname, "views"))), paths starting from layouts/ are resolved relative to views, regardless of the location of the current EJS file.-->
+
+<% layout('layouts/boilerplate.ejs') %>
+        <div class="row">
+            <div class="col-8 offset-2">
+                
+        <h3>Edit List</h3>
+        
+        <!-- <div class="card col-9 offset-1"><img src="<%= extractedList.image.url %>" class="  card-img-top show-img"  alt="image"></div> -->
+                <form action="/listings/<%= extractedList._id %>?_method=PUT" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label"></label>
+                        <input type="text" placeholder="Enter title" name="Listing[title]"
+                            value="<%=extractedList.title%>" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label"></label>
+                        <textarea name="Listing[description]" id=""
+                            class="form-control" required><%= extractedList.description %> </textarea>
+                    </div>
+                    <div class="mb-3">
+                        <img src="<%= originalImageUrl%>" style="width: 30%;" alt="Avatar">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload Listing Image</label>
+                        <input type="file" name="Listing[image]" class="form-control" value="">
+                    </div>
+                    <div class="mt-4 mb-3">
+                      <label for="category" class="form-label">Category</label>
+                      <select name="Listing[category]" id="category" class="form-control" required>
+                          <option value="" disabled selected><%= extractedList.category.toUpperCase() %></option>
+                          <option value="mountain">MOUNTAIN</option>
+                          <option value="farm">FARM</option>
+                          <option value="castle">CASTLE</option>
+                          <option value="beach">BEACH</option>
+                          <option value="snow">SNOW</option>
+                          <option value="pool">POOL</option>
+                          <option value="city">CITY</option>
+                          <option value="camping">CAMPING</option>
+                      </select>
+                      <div class="invalid-feedback">
+                          Please select a category.
+                      </div>
+                  </div>
+                      
+                
+                      
+                                    
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label"></label>
+                        <input  placeholder="Enter price" name="Listing[price]"
+                            value="<%= extractedList.price %>" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label"></label>
+                        <input type="text" placeholder="Enter location" name="Listing[location]"
+                            value="<%= extractedList.location %>" class="form-control" required>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="country" class="form-label"></label>
+                        <input type="text" placeholder="Enter country" name="Listing[country]"
+                            value="<%= extractedList.country %>" class="form-control" required>
+                    </div>
+                    <button class="btn btn-dark edit-btn">Edit</button>
+                </form>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            function selectCategory(category) {
+              // Update button text to reflect the selected category
+              document.getElementById('dropdownMenuButton').textContent = category;
+              
+              // Update the hidden input field value
+              document.getElementById('selectedCategory').value = category;
+            }
+          </script>
