@@ -37,28 +37,7 @@ module.exports.showListing=async (req, res, next) => {
 
 module.exports.createListing=async (req, res, next) => { 
     console.log("This is request body ",req.body);
-    // let result=listingSchema.validate(req.body);
-    //  // Log incoming request body
 
-    // // if (!req.body.Listing) {
-    // //     throw new ExpressErrors(400, "Send Valid data for listing");//bad request by the user
-    // // }
-
-    // // if (!req.body.Listing.title) {
-    // //     throw new ExpressErrors(400, "Title is missing");
-    // // }
-
-    // // if (!req.body.Listing.description) {
-    // //     throw new ExpressErrors(400, "Description is missing");
-    // // }
-
-    // // if (!req.body.Listing.location) {
-    // //     throw new ExpressErrors(400, "Location is missing");
-    // // }
-
-    // // if (!req.body.Listing.country) {
-    // //     throw new ExpressErrors(400, "Country is missing");
-    // // }
     let url=req.file.path;
     let filename=req.file.filename;
     console.log("This is img url ",url, " and filename ",filename);
@@ -91,7 +70,6 @@ module.exports.renderEditForm=async (req, res, next) => {
         res.redirect("/listings");
     }
     let originalImageUrl=extractedList.image.url;
-    // originalImageUrl=originalImageUrl.replace("/upload","/upload/h-300/e_blur:300")
         console.log("This is extractedlist from edit renderform ",extractedList);
      res.render("listings/edit.ejs", { originalImageUrl,extractedList});
 };
